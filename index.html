@@ -10,12 +10,17 @@
     };
 
     displayImages = function(keyword) {
-      const url = `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${apiKey}&limit=1`;
+      const url = `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${apiKey}&limit=5`;
       fetch(url)
         .then(res => res.json())
         .then(res => {
-          const fixedSizeImageUrl = res.data[0].images.fixed_height.url;
-          document.getElementById('images').innerHTML = `<img src=${fixedSizeImageUrl}>`;
+          const fixedSizeImageUrls = res.data
+            .map(item => item.images.fixed_height.url);
+          let htmlStr = '';
+          fixedSizeImageUrls.forEach(url => {
+            htmlStr += `<img src=${url}><br />`
+          });
+          document.getElementById('images').innerHTML = htmlStr;
         });
     }
 
