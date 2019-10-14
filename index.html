@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    const apiKey = '8aNhHNIC3Hq8aSYTkHWbbbvJMgKcFBcx';
+    handleSearchInput = function() {
+      const keyword = document.getElementById('search-input').value;
+      displayImages(keyword);
+    };
+
+    displayImages = function(keyword) {
+      const url = `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${apiKey}&limit=1`;
+      fetch(url)
+        .then(res => res.json())
+        .then(res => {
+          const fixedSizeImageUrl = res.data[0].images.fixed_height.url;
+          document.getElementById('images').innerHTML = `<img src=${fixedSizeImageUrl}>`;
+        });
+    }
+
+  </script>
+</head>
+
+<body>
+  <input id="search-input" type="text">
+  <button type="button" onclick="handleSearchInput()">Go</button>
+  <div id="images"></div>
+</body>
+
+</html>
