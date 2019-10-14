@@ -21,6 +21,7 @@
   </style>
   <script>
     const apiKey = '8aNhHNIC3Hq8aSYTkHWbbbvJMgKcFBcx';
+
     handleSearchInput = function() {
       const keyword = document.getElementById('search-input').value;
       displayImages(keyword);
@@ -50,4 +51,29 @@
   <div id="images"></div>
 </body>
 
+<script>
+  const autoCompleteList = [
+    'about',
+    'above',
+    'across',
+    'app',
+    'apple',
+    'appreciate',
+    'bad',
+    'ball',
+    'balloon',
+    'bell',
+    'cat'
+  ];
+
+  document
+      .getElementById('search-input')
+      .addEventListener('input', (e) => {
+        const value = e.target.value;
+        // start with first 3 letters to get possible matches
+        const matches = autoCompleteList
+          .filter(word => word.indexOf(value) === 0);
+        console.log('matches', matches);
+      });
+</script>
 </html>
