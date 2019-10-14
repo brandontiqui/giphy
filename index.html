@@ -2,6 +2,23 @@
 <html>
 
 <head>
+  <style>
+    #search-button {
+      background-color: gold;
+      padding: 5px;
+      width: 100px;
+      border-radius: 5px;
+    }
+
+    #search-input {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+    body {
+      background-color: black
+    }
+  </style>
   <script>
     const apiKey = '8aNhHNIC3Hq8aSYTkHWbbbvJMgKcFBcx';
     handleSearchInput = function() {
@@ -28,8 +45,8 @@
 </head>
 
 <body>
-  <input id="search-input" type="text">
-  <button type="button" onclick="handleSearchInput()">Go</button>
+  <input id="search-input" type="text" placeholder="Search Terms"><br />
+  <button id="search-button" type="button" onclick="handleSearchInput()">Go</button>
   <div id="images"></div>
 </body>
 
